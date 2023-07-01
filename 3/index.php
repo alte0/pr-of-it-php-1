@@ -29,8 +29,8 @@ require __DIR__ . '/calculate.php';
                     class="form-control"
                     id="formControlInput1"
                     placeholder="введите число"
-                    <?php if (isset($_GET["num_1"])){ ?>
-                    value=<?php echo $_GET["num_1"] ?>
+                    <?php if (isset($_GET['num_1'])){ ?>
+                    value=<?php echo $_GET['num_1'] ?>
                     <?php } ?>
             >
         </div>
@@ -39,7 +39,7 @@ require __DIR__ . '/calculate.php';
             <select name="sign_value" class="form-select" aria-label="Default select example" id="formControlSelect"
                     autocomplete="off">
                 <option
-                    <?php if (!isset($_GET["sign_value"])) { ?>
+                    <?php if (!isset($_GET['sign_value'])) { ?>
                         selected
                     <?php } ?>
                 >Выберете
@@ -47,8 +47,8 @@ require __DIR__ . '/calculate.php';
                 <?php foreach ($signs as $sing) { ?>
                     <option
                             value=<?php echo $sing ?>
-                            <?php if (isset($_GET["sign_value"])) { ?>
-                                <?php echo $_GET["sign_value"] == $sing ? 'selected' : '' ?>
+                            <?php if (isset($_GET['sign_value'])) { ?>
+                                <?php echo $_GET['sign_value'] == $sing ? 'selected' : '' ?>
                             <?php } ?>
                     ><?php echo $sing ?></option>
                 <?php } ?>
@@ -62,14 +62,14 @@ require __DIR__ . '/calculate.php';
                     class="form-control"
                     id="formControlInput2"
                     placeholder="введите число"
-                    <?php if (isset($_GET["num_2"])){ ?>
-                    value=<?php echo $_GET["num_2"] ?>
+                    <?php if (isset($_GET['num_2'])){ ?>
+                    value=<?php echo $_GET['num_2'] ?>
                     <?php } ?>
             >
         </div>
         <div class="col-md-3 mb-3 d-flex align-items-end">
             <button type="submit" class="btn btn-primary">=</button>
-            <?php if ($result) { ?>
+            <?php if (boolval($result)) { ?>
                 <span class="p-2"><?php echo $result ?></span>
             <?php } ?>
         </div>

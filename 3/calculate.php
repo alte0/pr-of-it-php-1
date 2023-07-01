@@ -3,7 +3,7 @@
 if (
     isset($_GET["num_1"]) && is_numeric($_GET["num_1"]) &&
     isset($_GET["num_2"]) && is_numeric($_GET["num_2"]) &&
-    isset($_GET["sign_value"]) && in_array($_GET["sign_value"], $signs)
+    isset($_GET["sign_value"]) && is_array($signs) && in_array($_GET["sign_value"], $signs)
 ) {
     $num_1 = intval($_GET["num_1"]);
     $num_2 = intval($_GET["num_2"]);
