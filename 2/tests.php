@@ -1,25 +1,37 @@
 <?php
-$a = 3;
-$b = -4;
-$c = 2;
-$d = -8;
+$aTest = 3;
+$bTest = -4;
+$cTest = 2;
+$dTest = -8;
 // D < 0 корней нет
-assert($d == calculationDiscriminant($a,$b,$c));
-assert('' == getRootText($d, $a, $b));
-$a = 1;
-$b = -6;
-$c = 9;
-$d = 0;
+$discriminantTest = calculationDiscriminant($aTest, $bTest, $cTest);
+assert($dTest == $discriminantTest);
+$countSqrtTest = getCountSqrt($discriminantTest);
+assert(0 == $countSqrtTest);
+assert(null == getSqrt($discriminantTest, $aTest, $bTest));
+
+$aTest = 1;
+$bTest = -6;
+$cTest = 9;
+$dTest = 0;
 // D == 0 один корень
-assert($d == calculationDiscriminant($a,$b,$c));
-assert('x = 3' == getRootText($d, $a, $b));
-$a = 1;
-$b = -4;
-$c = -5;
-$d = 36;
+$discriminantTest = calculationDiscriminant($aTest, $bTest, $cTest);
+assert($dTest == $discriminantTest);
+$countSqrtTest = getCountSqrt($discriminantTest);
+assert(1 == $countSqrtTest);
+assert(3 == getSqrt($discriminantTest, $aTest, $bTest));
+
+$aTest = 1;
+$bTest = -4;
+$cTest = -5;
+$dTest = 36;
 // D > 0 два корня
-assert($d == calculationDiscriminant($a,$b,$c));
-assert('x<sub>1</sub> = 5, x<sub>2</sub> = -1' == getRootText($d, $a, $b));
+$discriminantTest = calculationDiscriminant($aTest, $bTest, $cTest);
+assert($dTest == $discriminantTest);
+$countSqrtTest = getCountSqrt($discriminantTest);
+assert(2 == $countSqrtTest);
+assert(5 == getSqrt($discriminantTest, $aTest, $bTest));
+assert(-1 == getSqrt($discriminantTest, $aTest, $bTest, '-'));
 
 
 $textFemale = 'Женщина';
