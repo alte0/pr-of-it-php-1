@@ -1,5 +1,5 @@
 <?php
-$gallary = [
+return [
     [
         'ID' => 1,
         'SRC' => 'images/gallary_1.jpg',

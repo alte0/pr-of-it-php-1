@@ -1,16 +1,14 @@
 <?php
-$result = null;
-$signs = ['+', '-', '*', '/'];
 
 if (
-    isset($_GET["NUM_1"]) && is_numeric($_GET["NUM_1"]) &&
-    isset($_GET["NUM_2"]) && is_numeric($_GET["NUM_2"]) &&
-    isset($_GET["SIGN_VALUE"]) && in_array($_GET["SIGN_VALUE"], $signs)
-){
-    $num_1 = intval($_GET["NUM_1"]);
-    $num_2 = intval($_GET["NUM_2"]);
+    isset($_GET["num_1"]) && is_numeric($_GET["num_1"]) &&
+    isset($_GET["num_2"]) && is_numeric($_GET["num_2"]) &&
+    isset($_GET["sign_value"]) && in_array($_GET["sign_value"], $signs)
+) {
+    $num_1 = intval($_GET["num_1"]);
+    $num_2 = intval($_GET["num_2"]);
 
-    switch ($_GET["SIGN_VALUE"]){
+    switch ($_GET["sign_value"]) {
         case '+':
             $result = $num_1 + $num_2;
             break;
