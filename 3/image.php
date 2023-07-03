@@ -4,7 +4,7 @@ $arrImage = [];
 
 if (isset($_GET['id']) && $_GET['id'] > 0) {
     $idImg = intval($_GET['id']);
-    $indexImage = array_search($idImg, array_column($images, 'ID'));
+    $indexImage = array_search($idImg, array_column($images, 'id'));
 
     if ($indexImage !== false) {
         $arrImage = $images[$indexImage];
@@ -25,7 +25,7 @@ if (isset($_GET['id']) && $_GET['id'] > 0) {
 <body>
 <div class="container">
     <?php if (is_array($arrImage) && count($arrImage)) { ?>
-        <img class="img-fluid" src="<?= $arrImage['SRC'] ?>" alt="<?= $arrImage['ALT'] ?>">
+        <img class="img-fluid" src="<?= $arrImage['src'] ?>" alt="<?= $arrImage['alt'] ?>">
     <?php } else { ?>
         <p class="text-center py-3">Изображение не найдено</p>
     <?php } ?>

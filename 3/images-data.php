@@ -1,23 +1,23 @@
 <?php
 return [
     [
-        'ID' => 1,
-        'SRC' => 'images/gallary_1.jpg',
-        'ALT' => 'gallary_1.jpg',
+        'id' => 1,
+        'src' => 'images/gallary_1.jpg',
+        'alt' => 'gallary_1.jpg',
     ],
     [
-        'ID' => 2,
-        'SRC' => 'images/gallary_2.jpg',
-        'ALT' => 'gallary_2.jpg',
+        'id' => 2,
+        'src' => 'images/gallary_2.jpg',
+        'alt' => 'gallary_2.jpg',
     ],
     [
-        'ID' => 3,
-        'SRC' => 'images/gallary_3.jpg',
-        'ALT' => 'gallary_3.jpg',
+        'id' => 3,
+        'src' => 'images/gallary_3.jpg',
+        'alt' => 'gallary_3.jpg',
     ],
     [
-        'ID' => 4,
-        'SRC' => 'images/gallary_4.jpg',
-        'ALT' => 'gallary_4.jpg',
+        'id' => 4,
+        'src' => 'images/gallary_4.jpg',
+        'alt' => 'gallary_4.jpg',
     ],
 ];

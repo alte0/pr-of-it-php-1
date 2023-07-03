@@ -78,9 +78,9 @@ require __DIR__ . '/calculate.php';
     <div class="row row-cols-md-1 row-cols-xl-2 gy-4">
         <?php foreach ($images as $image) { ?>
             <div class="col-12">
-                <a href="image.php?id=<?php echo $image['ID'] ?>">
-                    <img loading="lazy" src="<?php echo $image['SRC'] ?>" class="d-block w-100"
-                         alt="<?php echo $image['ALT'] ?>">
+                <a href="image.php?id=<?php echo $image['id'] ?>">
+                    <img loading="lazy" src="<?php echo $image['src'] ?>" class="d-block w-100"
+                         alt="<?php echo $image['alt'] ?>">
                 </a>
             </div>
         <?php } ?>
