@@ -4,12 +4,12 @@ require __DIR__ . '/include/include.php';
 
 $arrLinksList = [
     [
-        'HREF' => 'guest_book',
-        'TEXT' => 'Гостевая книга',
+        'href' => 'guest_book',
+        'text' => 'Гостевая книга',
     ],
     [
-        'HREF' => 'photo_gallery',
-        'TEXT' => 'Фотогалерея',
+        'href' => 'photo_gallery',
+        'text' => 'Фотогалерея',
     ],
 ];
 
@@ -31,7 +31,7 @@ $arrLinksList = [
     <ul class="">
         <?php foreach ($arrLinksList as $link) { ?>
             <li class="">
-                <a href="<?php echo($_SERVER['REQUEST_URI'] . $link['HREF']) ?>"><?php echo $link['TEXT'] ?></a>
+                <a href="<?php echo($_SERVER['REQUEST_URI'] . $link['href']) ?>"><?php echo $link['text'] ?></a>
             </li>
         <?php } ?>
     </ul>
