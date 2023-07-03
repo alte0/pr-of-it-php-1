@@ -47,7 +47,7 @@ $arrCurUser = getCurrentUser();
     <div class="row row-cols-md-1 row-cols-xl-4 gy-4">
         <?php foreach ($arrImages as $imageSrc) { ?>
             <div class="col-12">
-                <img src="<?php echo($_SERVER["REQUEST_URI"] . getDirImages() . $imageSrc) ?>" class="d-block w-100"
+                <img src="<?php echo($_SERVER['REQUEST_URI'] . getDirImages() . $imageSrc) ?>" class="d-block w-100"
                      alt="">
             </div>
         <?php } ?>

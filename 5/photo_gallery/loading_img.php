@@ -6,7 +6,10 @@ if (
     isset($_FILES['files']) && is_array($_FILES['files']) &&
     isset($_POST['redirect']) && $_POST['redirect']
 ) {
-    $isNoError = in_array(0, $_FILES['files']['error'], true);
+    $filesError = array_filter($_FILES['files']['error'], function ($itemError){
+        return $itemError > 0;
+    });
+    $isNoError = empty($filesError);
 
     if ($isNoError) {
         $finfo = finfo_open(FILEINFO_MIME_TYPE);

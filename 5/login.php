@@ -17,7 +17,7 @@ if (
 ) {
     if (checkPassword($_POST['login_user'], $_POST['password_user'])) {
         setCurrentUser($_POST['login_user']);
-        header("Location: " . $_POST['redirect']);
+        header('Location: ' . $_POST['redirect']);
     } else {
         if (isset($_SESSION)) {
             $_SESSION['error'][] = 'Неверный логин или пароль';

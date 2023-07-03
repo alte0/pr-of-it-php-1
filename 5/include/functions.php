@@ -126,13 +126,13 @@ function getDirImages()
 function logger($data)
 {
     $dirLog = __DIR__ . '/../logs/';
-    $pathFile = $dirLog . 'log.txt';
+    $pathFileLog = $dirLog . 'log.txt';
 
     if (!is_dir($dirLog)) {
         mkdir($dirLog, 0700);
     }
 
     if (is_array($data) && count($data)) {
-        file_put_contents($pathFile, implode(' ; ', $data) . PHP_EOL, FILE_APPEND);
+        file_put_contents($pathFileLog, implode(' ; ', $data) . PHP_EOL, FILE_APPEND);
     }
 }
