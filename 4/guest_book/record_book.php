@@ -9,7 +9,7 @@ if (
     $arrDataGuestBook = getDataFile(getPathGuestBook());
     $arrDataGuestBook[] = strip_tags($_POST['record']) . PHP_EOL;
     file_put_contents(getPathGuestBook(), $arrDataGuestBook);
-    header("Location: " . $_POST['redirect']);
+    header('Location: ' . $_POST['redirect']);
 } else {
     die('Ошибка');
 }

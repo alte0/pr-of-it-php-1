@@ -29,7 +29,7 @@ if (
         $_SESSION['error'][] = 'Ошибка загрузки.';
     }
 
-    header("Location: " . $_POST['redirect']);
+    header('Location: ' . $_POST['redirect']);
 } else {
     die('Ошибка');
 }
