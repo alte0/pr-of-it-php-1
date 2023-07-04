@@ -22,13 +22,12 @@ $arrDataGuestBook = getDataFile(getPathGuestBook());
         <h1>Записи из гостевой книги</h1>
         <ol class="">
             <?php foreach ($arrDataGuestBook as $recordRow) { ?>
-                <li class=""><?php echo $recordRow ?></li>
+                <li class=""><?php echo $recordRow; ?></li>
             <?php } ?>
         </ol>
     </div>
     <div class="py-3">
-        <form action="record_book.php" method="post">
-            <input type="text" hidden value="<?php echo $_SERVER['REQUEST_URI'] ?>" name="redirect">
+        <form action="/guest_book/record_book.php" method="post">
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Оставьте вашу запись в гостевой
                     книге:</label>

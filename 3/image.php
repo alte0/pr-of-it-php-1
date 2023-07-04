@@ -25,7 +25,7 @@ if (isset($_GET['id']) && $_GET['id'] > 0) {
 <body>
 <div class="container">
     <?php if (is_array($arrImage) && count($arrImage)) { ?>
-        <img class="img-fluid" src="<?= $arrImage['src'] ?>" alt="<?= $arrImage['alt'] ?>">
+        <img class="img-fluid" src="<?php echo $arrImage['src']; ?>" alt="<?php echo $arrImage['alt']; ?>">
     <?php } else { ?>
         <p class="text-center py-3">Изображение не найдено</p>
     <?php } ?>

@@ -48,14 +48,11 @@ function getSqrt($discriminant, $a, $b, $sign = '')
 
 function getGenderByName($name)
 {
-    $gender = null;
+    $genderId = -1;
 
     if (empty($name)) {
-        return $gender;
+        return $genderId;
     }
-
-    $textFemale = 'Женщина';
-    $textMale = 'Мужчина';
 
     $nameFemale1 = 'Марина';
     $nameFemale2 = 'Кристина';
@@ -63,10 +60,10 @@ function getGenderByName($name)
     $nameMale2 = 'Артём';
 
     if ((stripos($nameFemale1, $name) !== false) || (stripos($nameFemale2, $name) !== false)) {
-        $gender = $textFemale;
+        $genderId = 0;
     } elseif ((stripos($nameMale1, $name) !== false) || (stripos($nameMale2, $name) !== false)) {
-        $gender = $textMale;
+        $genderId = 1;
     }
 
-    return $gender;
+    return $genderId;
 }

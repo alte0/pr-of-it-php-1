@@ -27,15 +27,15 @@ $arrLinksList = [
     <h3>ДЗ 5</h3>
     <div>
         <?php if (is_array($arrCurUser) && count($arrCurUser)) { ?>
-            <span>Привет, <?php echo($arrCurUser['name'] ?: 'пользователь') ?>!</span>
+            <span>Привет, <?php echo($arrCurUser['name'] ?: 'пользователь'); ?>!</span>
         <?php } else { ?>
-            <a href="login.php<?php echo('?login_redirect=' . $_SERVER['REQUEST_URI']) ?>">Войти</a>
+            <a href="login.php">Войти</a>
         <?php } ?>
 
         <ul class="">
             <?php foreach ($arrLinksList as $link) { ?>
                 <li class="">
-                    <a href="<?php echo($_SERVER['REQUEST_URI'] . $link['href']) ?>"><?php echo $link['text'] ?></a>
+                    <a href="<?php echo $link['href']; ?>"><?php echo $link['text'] ?></a>
                 </li>
             <?php } ?>
         </ul>

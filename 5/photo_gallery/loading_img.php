@@ -2,13 +2,12 @@
 require '../include/include.php';
 
 if (
-    $_SERVER['REQUEST_METHOD'] === 'POST' &&
-    isset($_FILES['files']) && is_array($_FILES['files']) &&
-    isset($_POST['redirect']) && $_POST['redirect']
+    isset($_FILES['files']) && is_array($_FILES['files'])
 ) {
-    $filesError = array_filter($_FILES['files']['error'], function ($itemError){
+    $filesError = array_filter($_FILES['files']['error'], function ($itemError) {
         return $itemError > 0;
     });
+
     $isNoError = empty($filesError);
 
     if ($isNoError) {
@@ -41,7 +40,7 @@ if (
         $_SESSION['error'][] = 'Ошибка загрузки.';
     }
 
-    header('Location: ' . $_POST['redirect']);
+    header('Location: /photo_gallery');
 } else {
     die('Ошибка');
 }

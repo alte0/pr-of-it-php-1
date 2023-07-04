@@ -2,22 +2,14 @@
 
 require __DIR__ . '/include/include.php';
 
-if (empty($_GET['login_redirect'])) {
-    // login.php
-    $_GET['login_redirect'] = substr($_SERVER['PHP_SELF'], 0, -9);
-}
-
 if (getCurrentUser() && isset($_GET['login_redirect'])) {
-    header('Location: ' . $_GET['login_redirect']);
+    header('Location: /');
 }
 
-if (
-    $_SERVER['REQUEST_METHOD'] === 'POST' &&
-    isset($_POST['login_user']) && isset($_POST['password_user'])
-) {
+if (isset($_POST['login_user']) && isset($_POST['password_user'])) {
     if (checkPassword($_POST['login_user'], $_POST['password_user'])) {
         setCurrentUser($_POST['login_user']);
-        header('Location: ' . $_POST['redirect']);
+        header('Location: /');
     } else {
         if (isset($_SESSION)) {
             $_SESSION['error'][] = 'Неверный логин или пароль';
@@ -40,7 +32,6 @@ if (
 <body>
 <div class="container">
     <form method="post">
-        <input type="text" hidden value="<?php echo $_GET['login_redirect'] ?>" name="redirect">
         <div class="mb-3">
             <label for="login" class="form-label">Ваша логин</label>
             <input type="text" class="form-control" id="login" name="login_user"

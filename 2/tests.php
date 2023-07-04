@@ -34,10 +34,10 @@ assert(5 == getSqrt($discriminantTest, $aTest, $bTest));
 assert(-1 == getSqrt($discriminantTest, $aTest, $bTest, '-'));
 
 
-$textFemale = 'Женщина';
-$textMale = 'Мужчина';
-assert(null == getGenderByName(''));
-assert($textFemale == getGenderByName('Марина'));
-assert($textFemale == getGenderByName('Кристина'));
-assert($textMale == getGenderByName('Максим'));
-assert($textMale == getGenderByName('Артём'));
+
+assert(-1 == getGenderByName(''));
+assert(0 == getGenderByName('Марина'));
+assert(0 == getGenderByName('Кристина'));
+assert(1 == getGenderByName('Максим'));
+assert(1 == getGenderByName('Артём'));
+assert(-1 == getGenderByName('Василий'));

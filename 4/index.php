@@ -31,7 +31,7 @@ $arrLinksList = [
     <ul class="">
         <?php foreach ($arrLinksList as $link) { ?>
             <li class="">
-                <a href="<?php echo($_SERVER['REQUEST_URI'] . $link['href']) ?>"><?php echo $link['text'] ?></a>
+                <a href="<?php echo $link['href']; ?>"><?php echo $link['text']; ?></a>
             </li>
         <?php } ?>
     </ul>

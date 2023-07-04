@@ -299,13 +299,35 @@ $arrTextDiscriminant = getArrTextByRoots();
 
     <h2>Задание 4. Угадываем пол по имени человека</h2>
     <?php
+    $arGenders = ['Женщина','Мужчина'];
     $nameWomen = 'Марина';
     $nameMan = 'Максим';
     $nameMan2 = 'Василий';
     ?>
-    <p><?= $nameWomen . " - " . getGenderByName($nameWomen) ?></p>
-    <p><?= $nameMan . " - " . getGenderByName($nameMan) ?></p>
-    <p><?= $nameMan2 . " - " . getGenderByName($nameMan2) ?></p>
+    <p><?php
+        $genderId = getGenderByName($nameWomen);
+        if ($genderId >= 0) {
+            echo $nameWomen . " - " . $arGenders[$genderId];
+        } else {
+            echo $nameMan2 . " - неизвестно" ;
+        }
+        ?></p>
+    <p><?php
+        $genderId = getGenderByName($nameMan);
+        if ($genderId >= 0){
+            echo $nameMan . " - " . $arGenders[$genderId];
+        } else {
+            echo $nameMan2 . " - неизвестно" ;
+        }
+        ?></p>
+    <p><?php
+        $genderId = getGenderByName($nameMan2);
+        if ($genderId >= 0) {
+            echo $nameMan2 . " - " . $arGenders[$genderId];
+        } else {
+            echo $nameMan2 . " - неизвестно" ;
+        }
+        ?></p>
 </div>
 </body>
 </html>

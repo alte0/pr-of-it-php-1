@@ -26,12 +26,11 @@ $arrCurUser = getCurrentUser();
 <div class="container">
     <div class="py-3">
         <?php if (is_array($arrCurUser) && count($arrCurUser)) { ?>
-            <span>Привет, <?php echo($arrCurUser['name'] ?: 'пользователь') ?>!</span>
-            <form action="loading_img.php" method="post" enctype="multipart/form-data">
-                <input type="text" hidden value="<?= $_SERVER['REQUEST_URI'] ?>" name="redirect">
+            <span>Привет, <?php echo($arrCurUser['name'] ?: 'пользователь'); ?>!</span>
+            <form action="photo_gallery/loading_img.php" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Загрузить новое изображение (Можно выбрать больше одного.
-                        Разрешены: <?php echo implode(', ', array_keys(getAllowLoadImages())) ?>)</label>
+                        Разрешены: <?php echo implode(', ', array_keys(getAllowLoadImages())); ?>)</label>
                     <input class="form-control" type="file" id="formFile" name="files[]" accept="image/*" multiple
                            autocomplete="off">
                 </div>
@@ -41,13 +40,13 @@ $arrCurUser = getCurrentUser();
                 </div>
             </form>
         <?php } else { ?>
-            <a href="/pr-of-it-php-1/5/login.php<?php echo('?login_redirect=' . $_SERVER['REQUEST_URI']) ?>">Войти</a>
+            <a href="login.php">Войти</a>
         <?php } ?>
     </div>
     <div class="row row-cols-md-1 row-cols-xl-4 gy-4">
         <?php foreach ($arrImages as $imageSrc) { ?>
             <div class="col-12">
-                <img src="<?php echo($_SERVER['REQUEST_URI'] . getDirImages() . $imageSrc) ?>" class="d-block w-100"
+                <img src="<?php echo '/photo_gallery/images/' . $imageSrc; ?>" class="d-block w-100"
                      alt="">
             </div>
         <?php } ?>

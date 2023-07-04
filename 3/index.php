@@ -30,7 +30,7 @@ require __DIR__ . '/calculate.php';
                     id="formControlInput1"
                     placeholder="введите число"
                     <?php if (isset($_GET['num_1'])){ ?>
-                    value=<?php echo $_GET['num_1'] ?>
+                    value=<?php echo $_GET['num_1']; ?>
                     <?php } ?>
             >
         </div>
@@ -46,11 +46,11 @@ require __DIR__ . '/calculate.php';
                 </option>
                 <?php foreach ($signs as $sing) { ?>
                     <option
-                            value=<?php echo $sing ?>
+                            value=<?php echo $sing; ?>
                             <?php if (isset($_GET['sign_value'])) { ?>
-                                <?php echo $_GET['sign_value'] == $sing ? 'selected' : '' ?>
+                                <?php echo $_GET['sign_value'] == $sing ? 'selected' : ''; ?>
                             <?php } ?>
-                    ><?php echo $sing ?></option>
+                    ><?php echo $sing; ?></option>
                 <?php } ?>
             </select>
         </div>
@@ -63,14 +63,14 @@ require __DIR__ . '/calculate.php';
                     id="formControlInput2"
                     placeholder="введите число"
                     <?php if (isset($_GET['num_2'])){ ?>
-                    value=<?php echo $_GET['num_2'] ?>
+                    value=<?php echo $_GET['num_2']; ?>
                     <?php } ?>
             >
         </div>
         <div class="col-md-3 mb-3 d-flex align-items-end">
             <button type="submit" class="btn btn-primary">=</button>
             <?php if (boolval($result)) { ?>
-                <span class="p-2"><?php echo $result ?></span>
+                <span class="p-2"><?php echo $result; ?></span>
             <?php } ?>
         </div>
     </form>
@@ -78,9 +78,9 @@ require __DIR__ . '/calculate.php';
     <div class="row row-cols-md-1 row-cols-xl-2 gy-4">
         <?php foreach ($images as $image) { ?>
             <div class="col-12">
-                <a href="image.php?id=<?php echo $image['id'] ?>">
-                    <img loading="lazy" src="<?php echo $image['src'] ?>" class="d-block w-100"
-                         alt="<?php echo $image['alt'] ?>">
+                <a href="image.php?id=<?php echo $image['id']; ?>">
+                    <img loading="lazy" src="<?php echo $image['src']; ?>" class="d-block w-100"
+                         alt="<?php echo $image['alt']; ?>">
                 </a>
             </div>
         <?php } ?>
