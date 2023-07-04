@@ -27,7 +27,7 @@ $arrLinksList = [
     <h3>ДЗ 5</h3>
     <div>
         <?php if (is_array($arrCurUser) && count($arrCurUser)) { ?>
-            <span>Привет, <?php echo($arrCurUser['name'] ?: 'пользователь'); ?>!</span>
+            <span>Привет, <?php echo $arrCurUser['name'] ?: 'пользователь'; ?>!</span>
         <?php } else { ?>
             <a href="login.php">Войти</a>
         <?php } ?>

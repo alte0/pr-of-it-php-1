@@ -190,10 +190,10 @@ $arrTextDiscriminant = getArrTextByRoots();
         echo $arrTextDiscriminant[$countSqrt];
 
         if (1 === $countSqrt) {
-            echo(' x = ' . getSqrt($discriminant, $a, $b));
+            ?> x = <?php echo getSqrt($discriminant, $a, $b);
         } elseif (2 === $countSqrt) {
-            echo(' x<sub>1</sub> = ' . getSqrt($discriminant, $a, $b));
-            echo(' x<sub>2</sub> = ' . getSqrt($discriminant, $a, $b, '-'));
+            ?> x<sub>1</sub> = <?php echo getSqrt($discriminant, $a, $b);
+            ?> x<sub>2</sub> = <?php echo getSqrt($discriminant, $a, $b, '-');
         }
         ?></p>
     <!--    конец 1 уравнения-->
@@ -213,10 +213,10 @@ $arrTextDiscriminant = getArrTextByRoots();
         echo $arrTextDiscriminant[$countSqrt];
 
         if (1 === $countSqrt) {
-            echo(' x = ' . getSqrt($discriminant, $a, $b));
+            ?> x = <?php echo getSqrt($discriminant, $a, $b);
         } elseif (2 === $countSqrt) {
-            echo(' x<sub>1</sub> = ' . getSqrt($discriminant, $a, $b));
-            echo(' x<sub>2</sub> = ' . getSqrt($discriminant, $a, $b, '-'));
+            ?> x<sub>1</sub> = <?php echo getSqrt($discriminant, $a, $b);
+            ?> x<sub>2</sub> = <?php echo getSqrt($discriminant, $a, $b, '-');
         }
         ?></p>
     <!--    конец 2 уравнения-->
@@ -236,10 +236,10 @@ $arrTextDiscriminant = getArrTextByRoots();
         echo $arrTextDiscriminant[$countSqrt];
 
         if (1 === $countSqrt) {
-            echo(' x = ' . getSqrt($discriminant, $a, $b));
+            ?> x = <?php echo getSqrt($discriminant, $a, $b);
         } elseif (2 === $countSqrt) {
-            echo(' x<sub>1</sub> = ' . getSqrt($discriminant, $a, $b));
-            echo(' x<sub>2</sub> = ' . getSqrt($discriminant, $a, $b, '-'));
+            ?> x<sub>1</sub> = <?php echo getSqrt($discriminant, $a, $b);
+            ?> x<sub>2</sub> = <?php echo getSqrt($discriminant, $a, $b, '-');
         }
         ?></p>
     <!--    конец 3 уравнения-->

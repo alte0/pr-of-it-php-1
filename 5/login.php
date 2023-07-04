@@ -35,7 +35,7 @@ if (isset($_POST['login_user']) && isset($_POST['password_user'])) {
         <div class="mb-3">
             <label for="login" class="form-label">Ваша логин</label>
             <input type="text" class="form-control" id="login" name="login_user"
-                   value="<?php echo(isset($_POST['login_user']) ? $_POST['login_user'] : null); ?>">
+                   value="<?php echo isset($_POST['login_user']) ? $_POST['login_user'] : null; ?>">
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Ваш пароль</label>

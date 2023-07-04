@@ -26,7 +26,7 @@ $arrCurUser = getCurrentUser();
 <div class="container">
     <div class="py-3">
         <?php if (is_array($arrCurUser) && count($arrCurUser)) { ?>
-            <span>Привет, <?php echo($arrCurUser['name'] ?: 'пользователь'); ?>!</span>
+            <span>Привет, <?php echo $arrCurUser['name'] ?: 'пользователь'; ?>!</span>
             <form action="photo_gallery/loading_img.php" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Загрузить новое изображение (Можно выбрать больше одного.
