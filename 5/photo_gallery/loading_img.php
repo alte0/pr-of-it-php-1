@@ -13,18 +13,21 @@ if (
     if ($isNoError) {
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
 
-        foreach ($_FILES['files']['tmp_name'] as $index => $tmp_name) {
-            $mimeTypeFile = finfo_file($finfo, $tmp_name);
+        foreach ($_FILES['files']['tmp_name'] as $index => $tmpName) {
+            $mimeTypeFile = finfo_file($finfo, $tmpName);
+            $userFileName = basename($_FILES["files"]["name"][$index]);
 
             if (!in_array($mimeTypeFile, getAllowLoadImages())) {
-                $_SESSION['error'][] = 'Изображения с данным типом расширения запрещены.';
-                break;
+                $_SESSION['error'][] = 'Изображение "' . $userFileName . '" с данным типом расширения не загружено.';
+                continue;
+            }
+            
+            if (!is_uploaded_file($tmpName)){
+                $_SESSION['error'][] = 'Ошибка загрузки '. $userFileName;
             }
 
-            $userName = basename($_FILES["files"]["name"][$index]);
-
-            $newPathImage = getDirImages() . $userName;
-            move_uploaded_file($tmp_name, $newPathImage);
+            $newPathImage = getDirImages() . $userFileName;
+            move_uploaded_file($tmpName, $newPathImage);
 
 
             if ($_SESSION['USER']) {
