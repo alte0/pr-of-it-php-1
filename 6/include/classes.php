@@ -1,8 +1,10 @@
 <?php
+
 class TextFile
 {
     protected array $arrData = [];
     private string $pathTextFile = '';
+
     public function __construct(string $pathTextFile)
     {
         if (!is_dir($pathTextFile) && is_readable($pathTextFile)) {
@@ -15,7 +17,7 @@ class TextFile
         }
     }
 
-    public function append($text)
+    public function append(string $text)
     {
         $this->arrData[] = strip_tags(trim($text)) . PHP_EOL;
 
@@ -41,6 +43,7 @@ class GuestBook extends TextFile
 class Uploader
 {
     private array $fieldFile = [];
+
     public function __construct($fieldFile = [])
     {
         if (is_array($fieldFile) && count($fieldFile)) {
@@ -53,7 +56,7 @@ class Uploader
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
 
         foreach ($this->fieldFile['tmp_name'] as $index => $tmpName) {
-            if ($this->fieldFile['error'][$index] > 0){
+            if ($this->fieldFile['error'][$index] > 0) {
                 $_SESSION['error'][] = 'Ошибка загрузки';
                 continue;
             }
@@ -66,7 +69,7 @@ class Uploader
                 continue;
             }
 
-            if ($this->isUploaded($tmpName)){
+            if ($this->isUploaded($tmpName)) {
                 $newPathImage = $this->getDirImages() . $userFileName;
 
                 $this->upload($tmpName, $newPathImage);
@@ -86,7 +89,7 @@ class Uploader
         finfo_close($finfo);
     }
 
-    private function isUploaded($tmpName)
+    private function isUploaded(string $tmpName)
     {
         return is_uploaded_file($tmpName);
     }
