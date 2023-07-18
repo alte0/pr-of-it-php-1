@@ -1,6 +1,6 @@
 <?php
 
-require '../include/include.php';
+require __DIR__ . '/../include/include.php';
 
 $arrDataGuestBook = getDataFile(getPathGuestBook());
 

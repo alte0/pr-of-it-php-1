@@ -1,6 +1,6 @@
 <?php
 
-require '../include/include.php';
+require __DIR__ . '/../include/include.php';
 
 $pathImages = __DIR__ . '/' . getDirImages();
 $arrImages = getFilesInDir($pathImages);

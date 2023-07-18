@@ -2,7 +2,7 @@
 function getDataFile($filePath)
 {
     if (!is_dir($filePath) && is_readable($filePath)) {
-        $fileRes = file($filePath);
+        $fileRes = file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
         if (is_array($fileRes)) {
             return $fileRes;
