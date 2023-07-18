@@ -1,5 +1,7 @@
 <?php
 
+$signs = require __DIR__ . '/signs.php';
+
 if (
     isset($_GET["num_1"]) && is_numeric($_GET["num_1"]) &&
     isset($_GET["num_2"]) && is_numeric($_GET["num_2"]) &&

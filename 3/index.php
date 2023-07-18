@@ -1,7 +1,7 @@
 <?php
 
 $result = null;
-$signs = ['+', '-', '*', '/'];
+$signs = require __DIR__ . '/signs.php';
 $images = require __DIR__ . '/images-data.php';
 require __DIR__ . '/calculate.php';
 
@@ -69,9 +69,7 @@ require __DIR__ . '/calculate.php';
         </div>
         <div class="col-md-3 mb-3 d-flex align-items-end">
             <button type="submit" class="btn btn-primary">=</button>
-            <?php if (boolval($result)) { ?>
-                <span class="p-2"><?php echo $result; ?></span>
-            <?php } ?>
+            <span class="p-2"><?php echo $result; ?></span>
         </div>
     </form>
     <h2>Фотогалерея</h2>
