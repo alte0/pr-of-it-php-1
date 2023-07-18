@@ -1,7 +1,8 @@
 <?php
 
-require '../include/include.php';
+require __DIR__ . '/../include/include.php';
 
+$arrCurUser = getCurrentUser();
 $guestBook = new GuestBook(getPathGuestBook());
 $arrDataGuestBook = $guestBook->getData();
 
@@ -28,6 +29,7 @@ $arrDataGuestBook = $guestBook->getData();
         </ol>
     </div>
     <div class="py-3">
+        <?php if (is_array($arrCurUser) && count($arrCurUser)) { ?>
         <form action="/guest_book/record_book.php" method="post">
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Оставьте вашу запись в гостевой
@@ -38,6 +40,9 @@ $arrDataGuestBook = $guestBook->getData();
                 <button class="btn btn-success" type="submit">Оставить запись</button>
             </div>
         </form>
+        <?php } else { ?>
+            <a href="login.php">Войти</a>
+        <?php } ?>
     </div>
 </div>
 

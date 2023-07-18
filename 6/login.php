@@ -2,7 +2,7 @@
 
 require __DIR__ . '/include/include.php';
 
-if (getCurrentUser() && isset($_GET['login_redirect'])) {
+if (getCurrentUser()) {
     header('Location: /');
 }
 

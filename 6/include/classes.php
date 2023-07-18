@@ -8,7 +8,7 @@ class TextFile
     public function __construct(string $pathTextFile)
     {
         if (!is_dir($pathTextFile) && is_readable($pathTextFile)) {
-            $arrData = file($pathTextFile);
+            $arrData = file($pathTextFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
             if (is_array($arrData)) {
                 $this->arrData = $arrData;
@@ -19,7 +19,7 @@ class TextFile
 
     public function append(string $text)
     {
-        $this->arrData[] = strip_tags(trim($text)) . PHP_EOL;
+        $this->arrData[] = trim($text);
 
         return $this;
     }
@@ -27,7 +27,7 @@ class TextFile
     public function save()
     {
         if (!empty($this->pathTextFile)) {
-            file_put_contents($this->pathTextFile, $this->arrData);
+            file_put_contents($this->pathTextFile, implode(PHP_EOL, $this->arrData));
         }
     }
 }
@@ -36,7 +36,7 @@ class GuestBook extends TextFile
 {
     public function getData()
     {
-        return array_filter($this->arrData, 'trim');
+        return $this->arrData;
     }
 }
 

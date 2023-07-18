@@ -1,5 +1,5 @@
 <?php
-require '../include/include.php';
+require __DIR__ . '/../include/include.php';
 
 if (
     isset($_FILES['files']) && is_array($_FILES['files'])
