@@ -1,6 +1,6 @@
 <?php
 
-require '../include/include.php';
+require __DIR__ . '/../include/include.php';
 
 $pathImages = __DIR__ . '/' . getDirImages();
 $arrImages = getFilesInDir($pathImages);
@@ -46,8 +46,7 @@ $arrCurUser = getCurrentUser();
     <div class="row row-cols-md-1 row-cols-xl-4 gy-4">
         <?php foreach ($arrImages as $imageSrc) { ?>
             <div class="col-12">
-                <img src="<?php echo '/photo_gallery/images/' . $imageSrc; ?>" class="d-block w-100"
-                     alt="">
+                <img src="<?php echo '/photo_gallery/images/' . $imageSrc; ?>" class="d-block w-100" alt="">
             </div>
         <?php } ?>
     </div>

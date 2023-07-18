@@ -2,7 +2,7 @@
 function getDataFile($filePath)
 {
     if (!is_dir($filePath) && is_readable($filePath)) {
-        $fileRes = file($filePath);
+        $fileRes = file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
         if (is_array($fileRes)) {
             return $fileRes;
@@ -43,34 +43,21 @@ function getUsersList()
 {
     // password - 123
     return [
-        [
+        'test' => [
             'login' => 'test',
             'password_hash' => '$2y$10$J0GTM.AsRTeox1Bu5JyvT.0L0iJKdQS21RaLYY/WyvdbL9jQSYJnC',
             'name' => 'Тестовый',
         ],
-        [
+        'test2' => [
             'login' => 'test2',
             'password_hash' => '$2y$10$J0GTM.AsRTeox1Bu5JyvT.0L0iJKdQS21RaLYY/WyvdbL9jQSYJnC',
         ],
     ];
 }
 
-function getLoginsUsers()
-{
-    return array_column(getUsersList(), 'login');
-}
-
-function getIndexLogin($login)
-{
-    $arrLoginUsers = getLoginsUsers();
-    return array_search($login, $arrLoginUsers);
-}
-
 function existsUser($login)
 {
-    $arrLoginUsers = getLoginsUsers();
-
-    return in_array($login, $arrLoginUsers);
+    return key_exists($login, getUsersList());
 }
 
 function checkPassword($login, $password)
@@ -78,11 +65,7 @@ function checkPassword($login, $password)
     $isVerificationPassed = false;
 
     if (existsUser($login)) {
-        $indexUser = getIndexLogin($login);
-
-        if ($indexUser !== false) {
-            $isVerificationPassed = password_verify($password, getUsersList()[$indexUser]['password_hash']);
-        }
+        $isVerificationPassed = password_verify($password, getUsersList()[$login]['password_hash']);
     }
 
     return $isVerificationPassed;
@@ -90,11 +73,8 @@ function checkPassword($login, $password)
 
 function setCurrentUser($login)
 {
-    $indexUser = getIndexLogin($login);
-
-    if (isset(getUsersList()[$indexUser]) && isset($_SESSION)) {
-        $userData = getUsersList()[$indexUser];
-        $_SESSION['USER'] = $userData;
+    if (existsUser($login) && isset($_SESSION)) {
+        $_SESSION['USER'] = getUsersList()[$login];
     }
 }
 

@@ -1,5 +1,5 @@
 <?php
-require '../include/include.php';
+require __DIR__ . '/../include/include.php';
 
 if (
     isset($_FILES['files']) && is_array($_FILES['files'])
@@ -21,9 +21,9 @@ if (
                 $_SESSION['error'][] = 'Изображение "' . $userFileName . '" с данным типом расширения не загружено.';
                 continue;
             }
-            
-            if (!is_uploaded_file($tmpName)){
-                $_SESSION['error'][] = 'Ошибка загрузки '. $userFileName;
+
+            if (!is_uploaded_file($tmpName)) {
+                $_SESSION['error'][] = 'Ошибка загрузки ' . $userFileName;
             }
 
             $newPathImage = getDirImages() . $userFileName;

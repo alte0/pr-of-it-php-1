@@ -2,7 +2,7 @@
 
 require __DIR__ . '/include/include.php';
 
-if (getCurrentUser() && isset($_GET['login_redirect'])) {
+if (getCurrentUser()) {
     header('Location: /');
 }
 
@@ -41,7 +41,7 @@ if (isset($_POST['login_user']) && isset($_POST['password_user'])) {
             <label for="password" class="form-label">Ваш пароль</label>
             <input type="password" class="form-control" id="password" name="password_user" autocomplete="off">
         </div>
-        <?php showError() ?>
+        <?php showError(); ?>
         <button type="submit" class="btn btn-primary">Войти</button>
     </form>
 </div>
