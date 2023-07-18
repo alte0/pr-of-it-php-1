@@ -5,8 +5,6 @@ require __DIR__ . '/functions.php';
 // Тесты для функций
 require __DIR__ . '/tests.php';
 
-$arrTextDiscriminant = getArrTextByRoots();
-
 ?>
 <!doctype html>
 <html lang="ru">
@@ -179,21 +177,24 @@ $arrTextDiscriminant = getArrTextByRoots();
     $a = 3;
     $b = -4;
     $c = 2;
-    $discriminant = calculationDiscriminant($a, $b, $c);
     ?>
     <p>Уравнение 1: <?php echo $a; ?>x<sup>2</sup> <?php echo $b; ?>x + <?php echo $c; ?> = 0.</p>
-    <p>Ответ:
-        <?php
-        $countSqrt = getCountSqrt($discriminant);
-        $x1 = $x2 = '';
-
-        echo $arrTextDiscriminant[$countSqrt];
-
-        if (1 === $countSqrt) {
-            ?> x = <?php echo getSqrt($discriminant, $a, $b);
-        } elseif (2 === $countSqrt) {
-            ?> x<sub>1</sub> = <?php echo getSqrt($discriminant, $a, $b);
-            ?> x<sub>2</sub> = <?php echo getSqrt($discriminant, $a, $b, '-');
+    <?php
+    $discriminant = calculationDiscriminant($a, $b, $c);
+    $x1 = (-$b + sqrt($discriminant)) / 2 * $a;
+    $x2 = (-$b - sqrt($discriminant)) / 2 * $a;
+    ?>
+    <p>Ответ: x<sub>1</sub> = <?php
+        if (!is_nan($x1)) {
+            echo $x1;
+        } else {
+            ?>нет корня<?php
+        }
+        ?>, x<sub>2</sub> = <?php
+        if (!is_nan($x2)) {
+            echo $x2;
+        } else {
+            ?>нет корня<?php
         }
         ?></p>
     <!--    конец 1 уравнения-->
@@ -202,21 +203,24 @@ $arrTextDiscriminant = getArrTextByRoots();
     $a = 1;
     $b = -6;
     $c = 9;
-    $discriminant = calculationDiscriminant($a, $b, $c);
     ?>
     <p>Уравнение 2: x<sup>2</sup> <?php echo $b; ?>x + <?php echo $c; ?> = 0.</p>
-    <p>Ответ:
-        <?php
-        $countSqrt = getCountSqrt($discriminant);
-        $x1 = $x2 = '';
-
-        echo $arrTextDiscriminant[$countSqrt];
-
-        if (1 === $countSqrt) {
-            ?> x = <?php echo getSqrt($discriminant, $a, $b);
-        } elseif (2 === $countSqrt) {
-            ?> x<sub>1</sub> = <?php echo getSqrt($discriminant, $a, $b);
-            ?> x<sub>2</sub> = <?php echo getSqrt($discriminant, $a, $b, '-');
+    <?php
+    $discriminant = calculationDiscriminant($a, $b, $c);
+    $x1 = (-$b + sqrt($discriminant)) / 2 * $a;
+    $x2 = (-$b - sqrt($discriminant)) / 2 * $a;
+    ?>
+    <p>Ответ: x<sub>1</sub> = <?php
+        if (!is_nan($x1)) {
+            echo $x1;
+        } else {
+            ?>нет корня<?php
+        }
+        ?>, x<sub>2</sub> = <?php
+        if (!is_nan($x2)) {
+            echo $x2;
+        } else {
+            ?>нет корня<?php
         }
         ?></p>
     <!--    конец 2 уравнения-->
@@ -225,21 +229,24 @@ $arrTextDiscriminant = getArrTextByRoots();
     $a = 1;
     $b = -4;
     $c = -5;
-    $discriminant = calculationDiscriminant($a, $b, $c);
     ?>
     <p>Уравнение 3: x<sup>2</sup> <?php echo $b; ?>x <?php echo $c; ?> = 0.</p>
-    <p>Ответ:
-        <?php
-        $countSqrt = getCountSqrt($discriminant);
-        $x1 = $x2 = '';
-
-        echo $arrTextDiscriminant[$countSqrt];
-
-        if (1 === $countSqrt) {
-            ?> x = <?php echo getSqrt($discriminant, $a, $b);
-        } elseif (2 === $countSqrt) {
-            ?> x<sub>1</sub> = <?php echo getSqrt($discriminant, $a, $b);
-            ?> x<sub>2</sub> = <?php echo getSqrt($discriminant, $a, $b, '-');
+    <?php
+    $discriminant = calculationDiscriminant($a, $b, $c);
+    $x1 = (-$b + sqrt($discriminant)) / 2 * $a;
+    $x2 = (-$b - sqrt($discriminant)) / 2 * $a;
+    ?>
+    <p>Ответ: x<sub>1</sub> = <?php
+        if (!is_nan($x1)) {
+            echo $x1;
+        } else {
+            ?>нет корня<?php
+        }
+        ?>, x<sub>2</sub> = <?php
+        if (!is_nan($x2)) {
+            echo $x2;
+        } else {
+            ?>нет корня<?php
         }
         ?></p>
     <!--    конец 3 уравнения-->
@@ -299,7 +306,7 @@ $arrTextDiscriminant = getArrTextByRoots();
 
     <h2>Задание 4. Угадываем пол по имени человека</h2>
     <?php
-    $arGenders = ['Женщина','Мужчина'];
+    $arGenders = ['Женщина', 'Мужчина'];
     $nameWomen = 'Марина';
     $nameMan = 'Максим';
     $nameMan2 = 'Василий';
@@ -309,15 +316,15 @@ $arrTextDiscriminant = getArrTextByRoots();
         if ($genderId >= 0) {
             echo $nameWomen . " - " . $arGenders[$genderId];
         } else {
-            echo $nameMan2 . " - неизвестно" ;
+            echo $nameMan2 . " - неизвестно";
         }
         ?></p>
     <p><?php
         $genderId = getGenderByName($nameMan);
-        if ($genderId >= 0){
+        if ($genderId >= 0) {
             echo $nameMan . " - " . $arGenders[$genderId];
         } else {
-            echo $nameMan2 . " - неизвестно" ;
+            echo $nameMan2 . " - неизвестно";
         }
         ?></p>
     <p><?php
@@ -325,7 +332,7 @@ $arrTextDiscriminant = getArrTextByRoots();
         if ($genderId >= 0) {
             echo $nameMan2 . " - " . $arGenders[$genderId];
         } else {
-            echo $nameMan2 . " - неизвестно" ;
+            echo $nameMan2 . " - неизвестно";
         }
         ?></p>
 </div>
