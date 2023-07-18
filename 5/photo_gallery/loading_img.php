@@ -34,6 +34,7 @@ if (
                 $arrLog = [];
                 $arrLog[] = $_SESSION['USER']['name'];
                 $arrLog[] = $newPathImage;
+                $arrLog[] = date("d.m.Y");
                 logger($arrLog);
             }
         }
