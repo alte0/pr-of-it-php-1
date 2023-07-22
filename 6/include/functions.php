@@ -1,7 +1,7 @@
 <?php
 function getPathGuestBook()
 {
-    return '../guest_book/data.txt';
+    return __DIR__ . '/../guest_book/data.txt';
 }
 
 function getFilesInDir($dir)

@@ -42,7 +42,7 @@ function getDirImages()
 
 function getPathGuestBook()
 {
-    return '../guest_book/data.txt';
+    return __DIR__ . '/../guest_book/data.txt';
 }
 
 function showError()
