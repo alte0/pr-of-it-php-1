@@ -91,6 +91,6 @@ function logger($data)
     }
 
     if (is_array($data) && count($data)) {
-        file_put_contents($pathFileLog, implode(' ; ', $data) . PHP_EOL, FILE_APPEND);
+        file_put_contents($pathFileLog, PHP_EOL . implode(' ; ', $data), FILE_APPEND);
     }
 }

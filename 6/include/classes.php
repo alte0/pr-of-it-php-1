@@ -42,51 +42,55 @@ class GuestBook extends TextFile
 
 class Uploader
 {
-    private array $fieldFile = [];
+    private string $nameFieldFile;
+    private array $errorText = [];
+    private array $logs = [];
 
-    public function __construct($fieldFile = [])
+    public function __construct($fieldFile = '')
     {
-        if (is_array($fieldFile) && count($fieldFile)) {
-            $this->fieldFile = $fieldFile;
+        if(!empty($fieldFile) && isset($_FILES[$fieldFile])) {
+            $this->nameFieldFile = $fieldFile;
         }
     }
 
     public function startingUploaded()
     {
-        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        if (is_array($_FILES[$this->nameFieldFile])) {
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $files = $_FILES[$this->nameFieldFile];
 
-        foreach ($this->fieldFile['tmp_name'] as $index => $tmpName) {
-            if ($this->fieldFile['error'][$index] > 0) {
-                $_SESSION['error'][] = 'Ошибка загрузки';
-                continue;
-            }
+            foreach ($files['tmp_name'] as $index => $tmpName) {
+                if ($files['error'][$index] > 0) {
+                    $this->setError('Ошибка загрузки');
 
-            $mimeTypeFile = finfo_file($finfo, $tmpName);
-            $userFileName = basename($this->fieldFile["name"][$index]);
-
-            if (!in_array($mimeTypeFile, $this->getAllowLoadImages())) {
-                $_SESSION['error'][] = 'Изображение "' . $userFileName . '" с данным типом расширения запрещено загружать!';
-                continue;
-            }
-
-            if ($this->isUploaded($tmpName)) {
-                $newPathImage = $this->getDirImages() . $userFileName;
-
-                $this->upload($tmpName, $newPathImage);
-
-                if ($_SESSION['USER']) {
-                    $arrLog = [];
-                    $arrLog[] = $_SESSION['USER']['name'];
-                    $arrLog[] = $newPathImage;
-                    logger($arrLog);
+                    continue;
                 }
-            } else {
-                $_SESSION['error'][] = 'Изображение ' . $tmpName . ' не загружено';
-                continue;
-            }
-        }
 
-        finfo_close($finfo);
+                $mimeTypeFile = finfo_file($finfo, $tmpName);
+                $userFileName = basename($files["name"][$index]);
+
+                if (!in_array($mimeTypeFile, $this->getAllowLoadImages())) {
+                    $textError = 'Изображение "' . $userFileName . '" с данным типом расширения запрещено загружать!';
+                    $this->setError($textError);
+
+                    continue;
+                }
+
+                if ($this->isUploaded($tmpName)) {
+                    $newPathImage = $this->getDirImages() . $userFileName;
+
+                    $this->upload($tmpName, $newPathImage);
+
+                    $this->setLog($newPathImage);
+                } else {
+                    $this->setError('Изображение ' . $tmpName . ' не загружено');
+
+                    continue;
+                }
+            }
+
+            finfo_close($finfo);
+        }
     }
 
     private function isUploaded(string $tmpName)
@@ -97,6 +101,26 @@ class Uploader
     private function upload($tmpName, $newPathImage)
     {
         move_uploaded_file($tmpName, $newPathImage);
+    }
+
+    private function setError(string $textError): void
+    {
+        $this->errorText[] = $textError;
+    }
+
+    public function getError(): array
+    {
+        return $this->errorText;
+    }
+
+    private function setLog(string $textLog): void
+    {
+        $this->logs[] = $textLog;
+    }
+
+    public function getLog(): array
+    {
+        return $this->logs;
     }
 
     public function getAllowLoadImages()
@@ -111,5 +135,16 @@ class Uploader
     public function getDirImages()
     {
         return 'images/';
+    }
+}
+
+class SessionRecorder
+{
+    public function recording(string $keyName, mixed $data): void
+    {
+        if (isset($_SESSION) && !empty($data
+            )) {
+            $_SESSION[$keyName] = $data;
+        }
     }
 }
