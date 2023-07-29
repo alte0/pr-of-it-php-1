@@ -14,8 +14,8 @@
     <?php if (isset($article)) {
         list($title, $desc) = $article->getArticle();
         ?>
-        <h3><?php echo $title ?></h3>
-        <p><?php echo $desc ?></p>
+        <h3><?php echo $title; ?></h3>
+        <p><?php echo $desc; ?></p>
     <?php } ?>
     <div class="py-3">
         <a href="/news.php">назад к новостям</a>
