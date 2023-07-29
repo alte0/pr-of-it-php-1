@@ -138,13 +138,37 @@ class Uploader
     }
 }
 
-class SessionRecorder
+class TemporaryDataStore
 {
-    public function recording(string $keyName, mixed $data): void
+    public function setData(string $keyName, mixed $data): void
     {
-        if (isset($_SESSION) && !empty($data
-            )) {
+        if (isset($_SESSION) && !empty($data)) {
             $_SESSION[$keyName] = $data;
         }
+    }
+
+    public function getData(string $keyName): mixed
+    {
+        if (isset($_SESSION[$keyName])) {
+            return $_SESSION[$keyName];
+        }
+    }
+
+    public function getDataAsStr(string $keyName): string
+    {
+        $str = '';
+
+        if (isset($_SESSION[$keyName])) {
+            $str = implode('</br>', $_SESSION[$keyName]);
+            unset($_SESSION[$keyName]);
+            $this->unset($keyName);
+        }
+
+        return $str;
+    }
+
+    private function unset(string $keyName): void
+    {
+        unset($_SESSION[$keyName]);
     }
 }

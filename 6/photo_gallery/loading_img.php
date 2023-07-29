@@ -7,8 +7,8 @@ if (
     $uploader = new Uploader('files');
     $uploader->startingUploaded();
 
-    $SessionRecorder = new SessionRecorder();
-    $SessionRecorder->recording('error', $uploader->getError());
+    $recordingSession = new TemporaryDataStore();
+    $recordingSession->setData('error', $uploader->getError());
 
     $arrLog = $uploader->getLog();
 

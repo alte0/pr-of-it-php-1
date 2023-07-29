@@ -9,6 +9,8 @@ $pathImages = __DIR__ . '/' . $uploader->getDirImages();
 $arrImages = getFilesInDir($pathImages);
 $allowUploadImages = array_keys($uploader->getAllowLoadImages());
 
+$recordingSession = new TemporaryDataStore();
+$error = $recordingSession->getDataAsStr('error');
 ?>
 <!doctype html>
 <html lang="ru">
@@ -37,7 +39,7 @@ $allowUploadImages = array_keys($uploader->getAllowLoadImages());
                     <input class="form-control" type="file" id="formFile" name="files[]" accept="image/*" multiple
                            autocomplete="off">
                 </div>
-                <?php showError(); ?>
+                <?php showError($error); ?>
                 <div>
                     <button class="btn btn-success" type="submit">Загрузить</button>
                 </div>
