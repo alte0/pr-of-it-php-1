@@ -4,12 +4,14 @@ session_start();
 require __DIR__ . '/../include/functions.php';
 require __DIR__ . '/../src/Uploader.php';
 require __DIR__ . '/../src/Auth.php';
+require __DIR__ . '/../src/TemporaryDataStore.php';
 require __DIR__ . '/../src/View.php';
-require_once __DIR__ . '/../src/Error.php';
 
-$errorData = new ErrorData;
+
+$temporaryDataStore = new TemporaryDataStore();
+
 $viewError = new View;
-$viewError->assign('error', $errorData->getError('filesError'));
+$viewError->assign('error', $temporaryDataStore->getData('error'));
 $contentError = $viewError->render(__DIR__ . '/../templates/error_tpl.php');
 
 $auth = new Auth;

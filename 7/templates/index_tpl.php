@@ -16,7 +16,7 @@
         <?php if (isset($arrCurUser) && is_array($arrCurUser) && count($arrCurUser)) { ?>
             <span>Привет, <?php echo $arrCurUser['name'] ?: 'пользователь'; ?>!</span>
         <?php } else { ?>
-            <a href="login_tpl.php">Войти</a>
+            <a href="login.php">Войти</a>
         <?php } ?>
 
         <ul class="">
