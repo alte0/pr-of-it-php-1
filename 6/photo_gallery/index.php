@@ -10,7 +10,7 @@ $arrImages = getFilesInDir($pathImages);
 $allowUploadImages = array_keys($uploader->getAllowLoadImages());
 
 $recordingSession = new TemporaryDataStore();
-$error = $recordingSession->getDataAsStr('error');
+$error = $recordingSession->getData('error');
 ?>
 <!doctype html>
 <html lang="ru">
