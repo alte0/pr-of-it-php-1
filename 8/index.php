@@ -13,7 +13,11 @@ insert into news (title, text, author) values ('заголовок третий'
 
 $db = new DB();
 $strSqlNews = 'SELECT * FROM news ORDER BY id DESC';
-$data = $db->query($strSqlNews);
+$data = [];
+
+if ($db->execute($strSqlNews)){
+    $data = $db->fetchData();
+}
 
 $view = new View;
 $view->assign('arrNews', $data);
