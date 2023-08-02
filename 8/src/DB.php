@@ -12,9 +12,11 @@ class DB
         $this->dbh = new PDO($arrConfigDB['dsn'], $arrConfigDB['user'], $arrConfigDB['password']);
     }
 
-    public function execute(string $sql): bool|PDOStatement
+    public function execute(string $sql): bool
     {
-        return $this->sth = $this->dbh->query($sql);
+        $this->sth = $this->dbh->query($sql);
+
+        return boolval($this->sth);
     }
 
     public function fetchData():array
@@ -22,7 +24,7 @@ class DB
         return $this->sth->fetchAll();
     }
 
-    public function query(string $sql, array|null $data = null): bool|array
+    public function query(string $sql, array $data = []): bool|array
     {
         $this->sth = $this->dbh->prepare($sql);
 
