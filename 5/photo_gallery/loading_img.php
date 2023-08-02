@@ -24,6 +24,7 @@ if (
 
             if (!is_uploaded_file($tmpName)) {
                 $_SESSION['error'][] = 'Ошибка загрузки ' . $userFileName;
+                continue;
             }
 
             $newPathImage = getDirImages() . $userFileName;
