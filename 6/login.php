@@ -17,6 +17,13 @@ if (isset($_POST['login_user']) && isset($_POST['password_user'])) {
     }
 }
 
+$error = '';
+
+if (isset($_SESSION['error'])){
+    $error = implode('<br>', $_SESSION['error']);
+    unset($_SESSION['error']);
+}
+
 ?>
 <!doctype html>
 <html lang="ru">
@@ -41,7 +48,7 @@ if (isset($_POST['login_user']) && isset($_POST['password_user'])) {
             <label for="password" class="form-label">Ваш пароль</label>
             <input type="password" class="form-control" id="password" name="password_user" autocomplete="off">
         </div>
-        <?php showError() ?>
+        <?php showError($error) ?>
         <button type="submit" class="btn btn-primary">Войти</button>
     </form>
 </div>

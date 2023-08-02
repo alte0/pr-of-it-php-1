@@ -18,7 +18,7 @@ function getFilesInDir($dir)
     return [];
 }
 
-function showError($error)
+function showError($error = '')
 {
     if (!empty($error)) { ?>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
