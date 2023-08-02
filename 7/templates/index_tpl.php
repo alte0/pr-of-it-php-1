@@ -24,7 +24,7 @@
             if (isset($listMenu)) {
                 foreach ($listMenu as $link) { ?>
                     <li class="">
-                        <a href="<?php echo $link['href']; ?>"><?php echo $link['text'] ?></a>
+                        <a href="<?php echo $link['href']; ?>"><?php echo $link['text']; ?></a>
                     </li>
                 <?php }
             } ?>

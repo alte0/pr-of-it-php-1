@@ -22,7 +22,7 @@
                     <h3>
                         <a href="/article.php?id=<?php echo $id; ?>"><?php echo $title; ?></a>
                     </h3>
-                    <p><?php echo $desc ?></p>
+                    <p><?php echo $desc; ?></p>
                 </div>
                 <?php
             }

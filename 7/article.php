@@ -14,7 +14,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id']) && $_GET['id'] > 0) {
 
 $view = new View;
 
-if ($article instanceof Article) {
+if (gettype($article) === 'object' && $article instanceof Article) {
     $view->assign('article', $article);
 }
 echo $view->render(__DIR__ . '/templates/article_tpl.php');

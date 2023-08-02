@@ -39,7 +39,7 @@
                 </div>
             </form>
         <?php } else { ?>
-            <a href="login_tpl.php">Войти</a>
+            <a href="login.php">Войти</a>
         <?php } ?>
     </div>
     <div class="row row-cols-md-1 row-cols-xl-4 gy-4">

@@ -35,7 +35,7 @@
                 </div>
             </form>
         <?php } else { ?>
-            <a href="login_tpl.php">Войти</a>
+            <a href="login.php">Войти</a>
         <?php } ?>
     </div>
 </div>
