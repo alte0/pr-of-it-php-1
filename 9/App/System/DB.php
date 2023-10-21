@@ -11,7 +11,11 @@ class DB
     {
         $arrConfigDB = require __DIR__ . '/../../configs/config_mysql.php';
 
-        $this->dbh = new \PDO($arrConfigDB['dsn'], $arrConfigDB['user'], $arrConfigDB['password']);
+        try {
+            $this->dbh = new \PDO($arrConfigDB['dsn'], $arrConfigDB['user'], $arrConfigDB['password']);
+        } catch (\PDOException $e) {
+            var_dump($e->getMessage());
+        }
     }
 
     public function execute(string $sql): bool
